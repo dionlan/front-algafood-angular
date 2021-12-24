@@ -10,15 +10,13 @@
       <input matInput type="text" [(ngModel)]="restaurante.taxaFrete" name="taxaFrete" required name="taxaFrete" maxlength="100" placeholder="7.99">
     </mat-form-field>
 
-    <div ngModelGroup="cozinha" #nameCtrl="ngModelGroup"> 
-      <mat-form-field appearance="fill">
-        <mat-label>Selecione uma cozinha</mat-label>
-        <mat-select [(ngModel)]="restaurante.cozinha" name="restaurante.cozinha">
-            <mat-option *ngFor="let c of cozinhas" [value]="c.id">{{ c.nome }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
+    <mat-form-field class="full-width">
+      <mat-label>Selecione uma cozinha</mat-label>
+      <mat-select [(ngModel)]="restaurante.cozinha" name="restaurante.cozinha">
+          <mat-option *ngFor="let c of cozinhas" [value]="c">{{ c.cozinhaNome }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
     <button (click)="create()"  mat-stroked-button color="primary">Cadastrar</button>
     <button (click)="cancel()" mat-stroked-button color="warn">Cancelar</button>
 </form>

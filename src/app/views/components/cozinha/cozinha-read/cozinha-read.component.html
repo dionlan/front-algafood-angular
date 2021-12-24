@@ -31,9 +31,11 @@
             <a routerLink="update/{{ element.id }}"> 
               <i id="edit" class="material-icons accent">edit</i>    
             </a>
+            <a routerLink="delete/{{ element.id }}"> 
+              <i id="delete" class="material-icons accent">delete</i>    
+            </a>
           </td>
         </ng-container>
-            
     
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

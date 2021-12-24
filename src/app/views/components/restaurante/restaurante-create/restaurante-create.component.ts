@@ -13,7 +13,9 @@ import { RestauranteService } from 'src/app/services/restaurante.service';
 })
 export class RestauranteCreateComponent implements OnInit {
 
-  formulario = new FormGroup({
+  cozinhas: Cozinha[] = [];
+
+  formCadastroRestaurante = new FormGroup({
     nome: new FormControl(null),
     taxaFrete: new FormControl(null),
     cozinha: new FormGroup({
@@ -21,15 +23,12 @@ export class RestauranteCreateComponent implements OnInit {
     })
   });
 
-  selected!: ''; 
-  idCozinha?: Cozinha;
-  cozinhas: Cozinha[] = [];
-
   restaurante: Restaurante = {
     nome: '',
     taxaFrete: '',
     cozinha: {
-      id: ''
+      id: '',
+      nomeCozinha: ''
     }
   }
  
@@ -40,23 +39,12 @@ export class RestauranteCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarCozinhas();
-    this.popularForm();
-
-/*     this.formulario = this.formBuilder.group({
-      nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(35)]],
-      precoFrete: '',
-
-      cozinha: this.formBuilder.group({
-        id: '',
-        nome: '',
-      })
-
-    }) */
+    this.popularFormCadastroRestaurante();
   }
 
-  popularForm(): void{
+  popularFormCadastroRestaurante(): void{
 
-    this.formulario.patchValue({
+    this.formCadastroRestaurante.patchValue({
       nome: this.restaurante.nome,
       taxaFrete: this.restaurante.taxaFrete,
       
@@ -71,11 +59,11 @@ export class RestauranteCreateComponent implements OnInit {
   }
 
   create():void {
-    let valueSubmit = Object.assign({}, this.formulario.value);
+    let valueSubmit = Object.assign({}, this.formCadastroRestaurante.value);
 
-    console.log('JSON:', this.popularForm());
+    console.log('JSON:', this.popularFormCadastroRestaurante());
     
-    this.service.create(this.formulario.value).subscribe((resposta) => {
+    this.service.create(this.formCadastroRestaurante.value).subscribe((resposta) => {
     this.router.navigate(['restaurantes']);
     this.service.message('Restaurante cadastro com sucesso!')
     });

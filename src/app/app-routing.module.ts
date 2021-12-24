@@ -6,6 +6,7 @@ import { RestauranteCreateComponent } from './views/components/restaurante/resta
 import { CozinhaReadComponent } from './views/components/cozinha/cozinha-read/cozinha-read.component';
 import { CozinhaCreateComponent } from './views/components/cozinha/cozinha-create/cozinha-create.component';
 import { CozinhaUpdateComponent } from './views/components/cozinha/cozinha-update/cozinha-update.component';
+import { CozinhaDeleteComponent } from './views/components/cozinha/cozinha-delete/cozinha-delete.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'cozinhas/update/:id',
     component: CozinhaUpdateComponent
+  },
+  {
+    path: 'cozinhas/delete/:id',
+    component: CozinhaDeleteComponent
   }
 ];
 

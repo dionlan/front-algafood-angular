@@ -25,7 +25,7 @@ export class CozinhaService {
   }
 
   create(cozinha: Cozinha):Observable<Cozinha>{
-    const url = "/api/cozinhas";
+    const url = `/api/cozinhas`;
     return this.http.post<Cozinha>(url, cozinha);
   }
 
@@ -33,6 +33,11 @@ export class CozinhaService {
     const url = `/api/cozinhas/${cozinha.id}`;
     //const url = `${this.baseUrl}/api/cozinhas/${cozinha.id}`
     return this.http.put<Cozinha>(url, cozinha);
+  }
+
+  delete(id: any): Observable<Cozinha>{
+    const url = `/api/cozinhas/${id}`;
+    return this.http.delete<Cozinha>(url);
   }
 
   message(msg: string): void{
