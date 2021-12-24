@@ -2,21 +2,29 @@
   <h1>Cadastrando novo restaurante</h1>
     <mat-form-field class="full-width">
       <mat-label>Nome</mat-label>
-      <input matInput type="text" [(ngModel)]="restaurante.nome" name="nome" [formControl]="nome" required name="nome" maxlength="100" placeholder="Ex. Tradição Mineira">
+      <input matInput type="text" [(ngModel)]="restaurante.nome" name="nome" required name="nome" maxlength="100" placeholder="Ex. Tradição Mineira">
     </mat-form-field>
 
     <mat-form-field class="full-width">
       <mat-label>Taxa de Frete</mat-label>
-      <input matInput value="" placeholder="Ex. 5.99">
+      <input matInput type="text" [(ngModel)]="restaurante.taxaFrete" name="taxaFrete" required name="taxaFrete" maxlength="100" placeholder="7.99">
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Selecione uma cozinha</mat-label>
-      <mat-select [(value)]="selected">
-          <mat-option *ngFor="let c of cozinhas" value="c.id">{{ c.nome }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div ngModelGroup="cozinha" #nameCtrl="ngModelGroup"> 
+      <mat-form-field appearance="fill">
+        <mat-label>Selecione uma cozinha</mat-label>
+        <mat-select [(ngModel)]="restaurante.cozinha" name="restaurante.cozinha">
+            <mat-option *ngFor="let c of cozinhas" [value]="c.id">{{ c.nome }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
-    <button (click)="create()" [disabled]="errorValidName()"  mat-stroked-button color="primary">Cadastrar</button>
+    <button (click)="create()"  mat-stroked-button color="primary">Cadastrar</button>
     <button (click)="cancel()" mat-stroked-button color="warn">Cancelar</button>
 </form>
+
+<div>
+  <pre>
+    {{restaurante | json}}
+  </pre>
+</div>

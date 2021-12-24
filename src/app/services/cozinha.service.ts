@@ -16,7 +16,6 @@ export class CozinhaService {
 
   findAll(): Observable<Cozinha[]>{
     const url = "/api/cozinhas";
-    console.log(url);
     return this.http.get<Cozinha[]>(url); 
   }
   
@@ -32,7 +31,6 @@ export class CozinhaService {
 
   update(cozinha: Cozinha):Observable<Cozinha>{
     const url = `/api/cozinhas/${cozinha.id}`;
-    console.log(url);
     //const url = `${this.baseUrl}/api/cozinhas/${cozinha.id}`
     return this.http.put<Cozinha>(url, cozinha);
   }

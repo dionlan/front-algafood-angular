@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { ControlContainer, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cozinha } from 'src/app/models/cozinha';
 import { Restaurante } from 'src/app/models/restaurante';
@@ -13,24 +13,57 @@ import { RestauranteService } from 'src/app/services/restaurante.service';
 })
 export class RestauranteCreateComponent implements OnInit {
 
-  selected?: ''; 
+  formulario = new FormGroup({
+    nome: new FormControl(null),
+    taxaFrete: new FormControl(null),
+    cozinha: new FormGroup({
+      id: new FormControl(null)
+    })
+  });
+
+  selected!: ''; 
   idCozinha?: Cozinha;
   cozinhas: Cozinha[] = [];
 
   restaurante: Restaurante = {
     nome: '',
-    precoFrete: 1,
-    cozinha: this.idCozinha
+    taxaFrete: '',
+    cozinha: {
+      id: ''
+    }
   }
-
-  nome = new FormControl('', [Validators.minLength(5)]);
-
+ 
   constructor(private router: Router,
               private service: RestauranteService, 
-              private cozinhaService: CozinhaService) { }
+              private cozinhaService: CozinhaService, 
+              private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.listarCozinhas();
+    this.popularForm();
+
+/*     this.formulario = this.formBuilder.group({
+      nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(35)]],
+      precoFrete: '',
+
+      cozinha: this.formBuilder.group({
+        id: '',
+        nome: '',
+      })
+
+    }) */
+  }
+
+  popularForm(): void{
+
+    this.formulario.patchValue({
+      nome: this.restaurante.nome,
+      taxaFrete: this.restaurante.taxaFrete,
+      
+      cozinha: {
+        id: this.restaurante.cozinha
+      }
+    });
   }
 
   cancel():void {
@@ -38,25 +71,29 @@ export class RestauranteCreateComponent implements OnInit {
   }
 
   create():void {
-    console.log(this.restaurante);
-    this.service.create(this.restaurante).subscribe((resposta) => {
-      this.restaurante.cozinha.id = resposta.cozinha.id;
-      this.router.navigate(['restaurantes']);
-      this.service.message('Restaurante cadastro com sucesso!')
+    let valueSubmit = Object.assign({}, this.formulario.value);
+
+    console.log('JSON:', this.popularForm());
+    
+    this.service.create(this.formulario.value).subscribe((resposta) => {
+    this.router.navigate(['restaurantes']);
+    this.service.message('Restaurante cadastro com sucesso!')
     });
   }
 
   listarCozinhas(): void {
     this.cozinhaService.findAll().subscribe(resposta => {
+      
       this.cozinhas = resposta;
+      console.log(this.cozinhas);
     })
   }
 
-  errorValidName(){
+/*   errorValidName(){
     if(this.nome.invalid){
       return 'O nome deve ter entre 5 e 100 caracteres'
     }
     return false;
-  }
+  } */
 
 }
