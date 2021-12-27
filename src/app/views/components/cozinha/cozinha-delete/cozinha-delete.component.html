@@ -2,7 +2,7 @@
     <h1>Deletando cozinha</h1>
       <mat-form-field class="full-width">
         <mat-label>Nome</mat-label>
-        <input [(ngModel)]="cozinha.cozinhaNome" name="cozinhaNome" disabled maxlength="60" matInput placeholder="Ex. Brasileira">
+        <input [(ngModel)]="cozinha.nome" name="nome" disabled maxlength="60" matInput placeholder="Ex. Brasileira">
       </mat-form-field> 
   
       <button class="mat-elevation-z8" (click)="delete()" mat-stroked-button color="primary">Excluir</button>

@@ -2,8 +2,8 @@
     <h1>Atualizando cozinha</h1>
       <mat-form-field class="full-width">
         <mat-label>Nome</mat-label>
-        <input [(ngModel)]="cozinha.cozinhaNome" [formControl]="cozinhaNome" required name="cozinhaNome" maxlength="60" matInput placeholder="Ex. Brasileira">
-        <mat-error *ngIf="cozinhaNome.invalid">{{ errorValidName() }}</mat-error>
+        <input [(ngModel)]="cozinha.nome" [formControl]="nome" required name="nome" maxlength="60" matInput placeholder="Ex. Brasileira">
+        <mat-error *ngIf="nome.invalid">{{ errorValidName() }}</mat-error>
       </mat-form-field> 
   
       <button class="mat-elevation-z8" (click)="update()" [disabled]="errorValidName()" mat-stroked-button color="primary">Atualizar</button>

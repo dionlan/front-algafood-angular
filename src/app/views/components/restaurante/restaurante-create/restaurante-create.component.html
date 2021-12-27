@@ -12,8 +12,8 @@
 
     <mat-form-field class="full-width">
       <mat-label>Selecione uma cozinha</mat-label>
-      <mat-select [(ngModel)]="restaurante.cozinha" name="restaurante.cozinha">
-          <mat-option *ngFor="let c of cozinhas" [value]="c.id">{{ c.cozinhaNome }}</mat-option>
+      <mat-select [(ngModel)]="restaurante.cozinha" [ngModelOptions]="{standalone: true}">
+          <mat-option *ngFor="let c of cozinhas" [value]="c.id">{{ c.nome }}</mat-option>
       </mat-select>
     </mat-form-field>
     

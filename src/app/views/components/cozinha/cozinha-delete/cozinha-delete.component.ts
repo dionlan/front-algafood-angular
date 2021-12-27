@@ -14,7 +14,7 @@ export class CozinhaDeleteComponent implements OnInit {
 
   cozinha: Cozinha = {
     id: '',
-    cozinhaNome: ''
+    nome: ''
   }
 
   constructor(private router: Router,

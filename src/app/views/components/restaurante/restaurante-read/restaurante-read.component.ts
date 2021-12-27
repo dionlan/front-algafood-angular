@@ -14,7 +14,7 @@ import { RestauranteService } from 'src/app/services/restaurante.service';
 export class RestauranteReadComponent implements AfterViewInit {
   restaurantes: Restaurante[] = [];
 
-  displayedColumns: string[] = ['id', 'nome', 'taxaFrete', 'cozinha.id', 'cozinha.cozinhaNome', 'action'];
+  displayedColumns: string[] = ['id', 'nome', 'taxaFrete', 'cozinha.id', 'cozinha.nome', 'action'];
 
   dataSource = new MatTableDataSource<Restaurante>(this.restaurantes);
 

@@ -1,4 +1,4 @@
 export interface Cozinha{
     id?: any;
-    cozinhaNome: string;
+    nome: string;
 }

@@ -2,8 +2,8 @@
     <h1>Cadastrando nova cozinha</h1>
       <mat-form-field class="full-width">
         <mat-label>Nome</mat-label>
-        <input matInput type="text" [(ngModel)]="cozinha.cozinhaNome" name="cozinhaNome" [formControl]="cozinhaNome" required name="cozinhaNome" maxlength="60" placeholder="Ex. Brasileira">
-        <mat-error *ngIf="cozinhaNome.invalid">{{ errorValidName() }}</mat-error>
+        <input matInput type="text" [(ngModel)]="cozinha.nome" name="nome" [formControl]="nome" required name="nome" maxlength="60" placeholder="Ex. Brasileira">
+        <mat-error *ngIf="nome.invalid">{{ errorValidName() }}</mat-error>
       </mat-form-field> 
   
       <button class="mat-elevation-z8" (click)="create()" [disabled]="errorValidName()" mat-stroked-button color="primary">Cadastrar</button>
