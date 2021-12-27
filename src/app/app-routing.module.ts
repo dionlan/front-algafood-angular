@@ -7,6 +7,8 @@ import { CozinhaReadComponent } from './views/components/cozinha/cozinha-read/co
 import { CozinhaCreateComponent } from './views/components/cozinha/cozinha-create/cozinha-create.component';
 import { CozinhaUpdateComponent } from './views/components/cozinha/cozinha-update/cozinha-update.component';
 import { CozinhaDeleteComponent } from './views/components/cozinha/cozinha-delete/cozinha-delete.component';
+import { RestauranteUpdateComponent } from './views/components/restaurante/restaurante-update/restaurante-update.component';
+import { RestauranteDeleteComponent } from './views/components/restaurante/restaurante-delete/restaurante-delete.component';
 
 const routes: Routes = [
   {
@@ -21,11 +23,15 @@ const routes: Routes = [
     path: 'restaurantes/create',
     component: RestauranteCreateComponent
   },
-
-
-
-
-
+  {
+    path: 'restaurantes/update/:id',
+    component: RestauranteUpdateComponent
+  },
+  {
+    path: 'restaurantes/delete/:id',
+    component: RestauranteDeleteComponent
+  },
+  
   {
     path: 'cozinhas',
     component: CozinhaReadComponent

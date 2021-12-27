@@ -17,6 +17,7 @@ export class CozinhaUpdateComponent implements OnInit {
     id: '',
     cozinhaNome: ''
   }
+
   cozinhaNome = new FormControl('', [Validators.minLength(4)]);
 
   constructor(private router: Router,
@@ -56,7 +57,7 @@ export class CozinhaUpdateComponent implements OnInit {
 
   errorValidName(){
     if(this.cozinhaNome.invalid){
-      return 'O nome deve ter entre 5 e 60 caracteres'
+      return 'O nome da cozinha deve ter entre 5 e 60 caracteres'
     }
     return false;
   }

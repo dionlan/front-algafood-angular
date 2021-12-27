@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Observable, take } from 'rxjs';
 import { Restaurante } from '../models/restaurante';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RestauranteUpdateComponent } from '../views/components/restaurante/restaurante-update/restaurante-update.component';
 
 @Injectable({
   providedIn: 'root'
@@ -25,10 +26,24 @@ export class RestauranteService {
     return this.http.get<Restaurante[]>(url); 
   }
 
-  create(restaurante: Restaurante):Observable<Restaurante>{
+  findById(id: any): Observable<Restaurante>{
+    const url = `/api/restaurantes/${id}`;
+    return this.http.get<Restaurante>(url);
+  }
+
+  create(restaurante: Restaurante) :Observable<Restaurante>{
     const url = "/api/restaurantes";
-    console.log("User = ", JSON.stringify(restaurante));
     return this.http.post<Restaurante>(url, JSON.stringify(restaurante), this.headers);
+  }
+
+  update(id: any, restaurante: Restaurante): Observable<Restaurante>{
+    const url = `/api/restaurantes/${id}`;
+    return this.http.put<Restaurante>(url, JSON.stringify(restaurante), this.headers);
+  }
+
+  delete(id: any): Observable<Restaurante>{
+    const url = `/api/restaurantes/${id}`;
+    return this.http.delete<Restaurante>(url);
   }
 
   message(msg: string): void{

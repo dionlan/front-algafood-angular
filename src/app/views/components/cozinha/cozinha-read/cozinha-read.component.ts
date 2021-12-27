@@ -39,6 +39,4 @@ export class CozinhaReadComponent implements AfterViewInit {
   navigateToCreate():void {
     this.router.navigate(['cozinhas/create'])
   }
-
-
 }

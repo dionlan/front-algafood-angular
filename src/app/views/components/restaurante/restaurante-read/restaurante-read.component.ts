@@ -14,7 +14,7 @@ import { RestauranteService } from 'src/app/services/restaurante.service';
 export class RestauranteReadComponent implements AfterViewInit {
   restaurantes: Restaurante[] = [];
 
-  displayedColumns: string[] = ['id', 'nome', 'precoFrete', 'cozinha.id', 'cozinha.cozinhaNome'];
+  displayedColumns: string[] = ['id', 'nome', 'taxaFrete', 'cozinha.id', 'cozinha.cozinhaNome', 'action'];
 
   dataSource = new MatTableDataSource<Restaurante>(this.restaurantes);
 
@@ -39,8 +39,6 @@ export class RestauranteReadComponent implements AfterViewInit {
   navigateToCreate():void {
     this.router.navigate(['restaurantes/create'])
   }
-
-
 }
 
 /* export class RestauranteReadComponent implements OnInit {

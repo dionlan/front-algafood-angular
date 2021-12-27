@@ -34,6 +34,7 @@ import { CozinhaCreateComponent } from './views/components/cozinha/cozinha-creat
 import { CozinhaUpdateComponent } from './views/components/cozinha/cozinha-update/cozinha-update.component';
 import { CozinhaDeleteComponent } from './views/components/cozinha/cozinha-delete/cozinha-delete.component';
 import { RestauranteUpdateComponent } from './views/components/restaurante/restaurante-update/restaurante-update.component';
+import { RestauranteDeleteComponent } from './views/components/restaurante/restaurante-delete/restaurante-delete.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { RestauranteUpdateComponent } from './views/components/restaurante/resta
     CozinhaCreateComponent,
     CozinhaUpdateComponent,
     CozinhaDeleteComponent,
-    RestauranteUpdateComponent
+    RestauranteUpdateComponent,
+    RestauranteDeleteComponent
   ],
   imports: [
     BrowserModule,

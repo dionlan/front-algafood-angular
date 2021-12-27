@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlContainer, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cozinha } from 'src/app/models/cozinha';
 import { Restaurante } from 'src/app/models/restaurante';
@@ -39,7 +39,6 @@ export class RestauranteCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarCozinhas();
-    this.popularFormCadastroRestaurante();
   }
 
   popularFormCadastroRestaurante(): void{
@@ -59,9 +58,8 @@ export class RestauranteCreateComponent implements OnInit {
   }
 
   create():void {
-    let valueSubmit = Object.assign({}, this.formCadastroRestaurante.value);
-
-    console.log('JSON:', this.popularFormCadastroRestaurante());
+    this.popularFormCadastroRestaurante();
+    console.log("CRIAÇÃO RESTAURANTE: ", JSON.stringify(this.formCadastroRestaurante.value))
     
     this.service.create(this.formCadastroRestaurante.value).subscribe((resposta) => {
     this.router.navigate(['restaurantes']);

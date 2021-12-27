@@ -38,8 +38,7 @@ export class CozinhaDeleteComponent implements OnInit {
       this.service.message('Cozinha deletada com sucesso!')
     }, err => {
       this.service.message(err.error.detail);
-    }
-    )
+    })
   }
 
   cancel(): void{
